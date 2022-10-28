@@ -73,15 +73,11 @@ ln -s ../../config/database.yml redmine/config/database.yml
 
 # PurpleMine 2 theme
 header 'Installing PurpleMine 2 theme...'
-
-curl -L "https://github.com/mrliptontea/PurpleMine2/archive/refs/tags/v${purplemine_version}.tar.gz" | tar zx
-mv "PurpleMine2-${purplemine_version}" redmine/public/themes/PurpleMine2
+git -c advice.detachedHead= clone -b "v$purplemine_version" https://github.com/mrliptontea/PurpleMine2.git redmine/public/themes/PurpleMine2
 
 # Additionals plugin
 header 'Installing Additionals plugin...'
-
-curl -L "https://github.com/AlphaNodes/additionals/archive/refs/tags/${additionals_version}.tar.gz" | tar zx
-mv "additionals-${additionals_version}" redmine/plugins/additionals
+git -c advice.detachedHead= clone -b "$additionals_version" https://github.com/AlphaNodes/additionals.git redmine/plugins/additionals
 
 # Redmine Agile plugin
 header 'Installing Redmine Agile plugin...'
@@ -96,15 +92,11 @@ header 'Installing Redmine Agile plugin...'
 
 # Redmine Issues Tree plugin
 header 'Installing Redmine Issues Tree plugin...'
-
-curl -L "https://github.com/Loriowar/redmine_issues_tree/archive/refs/heads/${issues_tree_version}.tar.gz" | tar zx
-mv "redmine_issues_tree-${issues_tree_version}" redmine/plugins/redmine_issues_tree
+git clone -b "$issues_tree_version" https://github.com/Loriowar/redmine_issues_tree.git redmine/plugins/redmine_issues_tree
 
 # Redmine Shortcuts plugin
 header 'Installing Redmine Shortcuts plugin...'
-
-curl -L "https://github.com/davidegiacometti/redmine_shortcuts/archive/refs/tags/${shortcuts_version}.tar.gz" | tar zx
-mv "redmine_shortcuts-${shortcuts_version}" redmine/plugins/redmine_shortcuts
+git -c advice.detachedHead= clone -b "$shortcuts_version" https://github.com/davidegiacometti/redmine_shortcuts.git redmine/plugins/redmine_shortcuts
 
 # Customisations
 header 'Installing customisations plugin...'
