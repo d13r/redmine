@@ -84,7 +84,8 @@ header 'Installing Redmine Agile plugin...'
 
 (
     cd redmine/plugins
-    # '--insecure' is required because the intermediate certificate is missing (28 Oct 2022)
+    # '--insecure' is required because the intermediate certificate for www.redmineup.com is missing (28 Oct 2022)
+    # https://www.ssllabs.com/ssltest/analyze.html?d=www.redmineup.com
     curl -L --insecure "$agile_url" > redmine_agile.zip
     unzip redmine_agile.zip
     rm -f redmine_agile.zip
