@@ -111,6 +111,24 @@ header 'Installing customisations plugin...'
 
 ln -s ../../customisations redmine/plugins/customisations
 
+# Customise theme
+# https://github.com/mrliptontea/PurpleMine2#how-to-customize-it
+header 'Customising theme...'
+
+(
+    echo '// CUSTOMISATIONS'
+    echo '@import "../../../../../../sass/_custom-variables";'
+    echo '@import "../../../../../../sass/_custom-styles";'
+    echo
+    cat redmine/public/themes/PurpleMine2/src/sass/application.scss
+) | sponge redmine/public/themes/PurpleMine2/src/sass/application.scss
+
+(
+    cd redmine/public/themes/PurpleMine2
+    npm install
+    npm run build
+)
+
 # Install dependencies
 header 'Installing dependencies...'
 
