@@ -1,0 +1,3 @@
+# For some reason, installing both 'additionals' and 'redmine_issues_tree'
+# causes the wrong version of 'slim-rails' to be installed (0.1.2 instead of 3.x)
+gem 'slim-rails', '>= 3.5'

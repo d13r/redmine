@@ -1,0 +1,4 @@
+/config/*
+/redmine/
+
+!.gitkeep
