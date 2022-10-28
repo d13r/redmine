@@ -129,6 +129,11 @@ header 'Customising theme...'
     npm run build
 )
 
+# Fix context menu position
+# https://www.redmine.org/issues/25114
+header 'Fixing context menu position...'
+(cd redmine && patch -p0 < ../patches/fix_context_menu_positioning.patch)
+
 # Install dependencies
 header 'Installing dependencies...'
 

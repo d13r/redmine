@@ -1,0 +1,16 @@
+Index: public/javascripts/context_menu.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- public/javascripts/context_menu.js	(date 1487323326000)
++++ public/javascripts/context_menu.js	(revision )
+@@ -81,7 +81,7 @@
+     var menu = document.createElement("div");
+     menu.setAttribute("id", "context-menu");
+     menu.setAttribute("style", "display:none;");
+-    document.getElementById("content").appendChild(menu);
++    document.getElementsByTagName("body")[0].appendChild(menu);
+   }
+ }
+ 
