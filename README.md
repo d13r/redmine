@@ -9,10 +9,14 @@ This repository includes a setup script to download [Redmine](https://www.redmin
 ```bash
 sudo apt install libapache2-mod-passenger libmariadb-dev
 
-git clone git@github.com:d13r/redmine.git repo
-cd repo
+git clone git@github.com:d13r/redmine.git
+cd redmine
 scripts/setup.sh
+```
 
+It will fail at the migrations step - but that is OK for now.
+
+```bash
 vim config/database.yml
 ```
 
@@ -21,16 +25,25 @@ Fill in the database details. Copy the live database, or run this instead:
 ```bash
 cd redmine
 RAILS_ENV=production bundle exec rake db:migrate
+RAILS_ENV=production bundle exec rake redmine:plugins:migrate
 RAILS_ENV=production bundle exec rake redmine:load_default_data
 ```
 
 Configure Apache:
 
 ```apache
-DocumentRoot /home/www/red.djm.me/repo/redmine/public/
+DocumentRoot /var/www/redmine/redmine/public/
 
 SetEnv RUBYOPT "-r bundler/setup"
 ```
+
+Reload the config:
+
+```bash
+sudo systemctl reload apache2
+```
+
+Visit Redmine. Default login is `admin`/`admin`.
 
 ### Notes
 

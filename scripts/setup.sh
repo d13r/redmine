@@ -148,8 +148,13 @@ fi
 ln -s ../../../config/secret_token.rb redmine/config/initializers/secret_token.rb
 
 # Database migrations
+# This will fail if the database hasn't been configured yet - but that's OK
 header 'Running database migrations...'
-(cd redmine && bundle exec rake redmine:plugins:migrate RAILS_ENV=production)
+(
+    cd redmine
+    RAILS_ENV=production bundle exec rake db:migrate
+    RAILS_ENV=production bundle exec rake redmine:plugins:migrate
+)
 
 # Restart Redmine
 header 'Restarting Redmine...'
