@@ -45,6 +45,16 @@ sudo systemctl reload apache2
 
 Visit Redmine. Default login is `admin`/`admin`.
 
+Optionally configure a cron job to download emails:
+
+```bash
+crontab -e
+```
+
+```crontab
+*/2 * * * * cd /var/www/redmine/redmine && bundle exec rake redmine:email:receive_imap RAILS_ENV=production host=imap.fastmail.com port=993 ssl=1 username=d@djm.me password=XXXXXXXXXXXXXXXX folder="For Redmine" move_on_success=Archive move_on_failure=Inbox project=inbox allow_override=all
+```
+
 ### Notes
 
 `libmariadb-dev` was required to fix this error:
